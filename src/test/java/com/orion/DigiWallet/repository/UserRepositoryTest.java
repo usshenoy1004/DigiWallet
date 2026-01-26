@@ -2,6 +2,7 @@ package com.orion.DigiWallet.repository;
 
 
 import com.orion.DigiWallet.model.User;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 
@@ -17,11 +18,15 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ActiveProfiles("test")
 // FIRST SEE THE APPLICATION.PROPERTIES IN TEST RESOURCES FOLDER
     // ALSO LOOK AT THE DBSCIPT.SQL AND DATAINSERT.SQL FILES IN MAIN FOLDER
+//DONE: REMOVE @Disabled TO ENABLE THE TESTS
+//@Disabled
 class UserRepositoryTest {
 
     @Autowired
     private UserRepository userRepository;
 
+    //DONE: REMOVE @Disabled TO ENABLE THE TEST
+    //@Disabled
     @Test
     void existsByUsername_shouldReturnTrue_whenUserExists() {
 
@@ -40,7 +45,8 @@ class UserRepositoryTest {
         // THEN
         assertThat(exists).isTrue();
     }
-
+    //DONE: REMOVE @Disabled TO ENABLE THE TEST
+    //@Disabled
     @Test
     void existsByUsername_shouldReturnFalse_whenUserDoesNotExist() {
 

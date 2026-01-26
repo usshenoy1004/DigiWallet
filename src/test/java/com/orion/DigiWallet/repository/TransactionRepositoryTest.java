@@ -5,6 +5,7 @@ import com.orion.DigiWallet.model.Transaction;
 import com.orion.DigiWallet.model.User;
 import com.orion.DigiWallet.model.Wallet;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -22,6 +23,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 // FIRST SEE THE APPLICATION.PROPERTIES IN TEST RESOURCES FOLDER
 // ALSO LOOK AT THE DBSCIPT.SQL AND DATAINSERT.SQL FILES IN MAIN FOLDER
 //RUN THE SHELL SCRIPT TO CREATE THE TABLES IN TEST DATABASE BEFORE RUNNING THE TESTS
+//TODO: 3.6.1: REMOVE @Disabled TO ENABLE THE TESTS
+@Disabled
 public class TransactionRepositoryTest {
 
     @Autowired
@@ -44,30 +47,30 @@ public class TransactionRepositoryTest {
     void setUp() {
         // GIVEN
         // Create and persist User
-        User u = new User();
-        u.setUsername("Test User");
-        u.setEmail("txn.user@test.com");
-        this.user = userRepository.save(u);
+        //TODO: 3.6.2: SET OTHER MANDATORY FIELDS IF ANY IN USER ENTITY
+        // create user with dummy data eg username, email etc
+        // username: "Test User", email: "txn.user@test.com
+        // Save the user to the repository and assign to this.user
+
 
         // Create and persist Wallet linked to User
-        Wallet w = new Wallet();
-        w.setUser(user);
-        w.setBalance(BigDecimal.valueOf(1000));
-        w.setCurrency("INR");
-        w.setStatus("ACTIVE");
-        this.wallet = walletRepository.save(w);
+        //TODO: 3.6.3: Create wallet with dummy data eg balance, currency, status etc
+        // balance: 1000, currency: "INR", status: "ACTIVE"
+        // Link the wallet to the user created above
+        // Balance is BigDecimal.valueOf(1000)
+        // Save the wallet to the repository and assign to this.wallet
 
         // Create and persist Category
-        Category c = new Category();
+        //TODO: 3.6.4: Create category with type "EXPENSE"
+        // Save the category to the repository and assign to this.category
 
-        c.setType("EXPENSE");
-        this.category = categoryRepository.save(c);
     }
 
-    // TODO 5.1
+    //TODO: 3.6.5: READ ONLY
     // Write a test to verify:
     // - Transaction can be saved successfully
     // - Transaction ID is generated
+    @Disabled
     @Test
     void shouldSaveTransactionSuccessfully() {
         // GIVEN
@@ -85,50 +88,34 @@ public class TransactionRepositoryTest {
         assertThat(savedTransaction.getId()).isNotNull();
     }
 
-    // TODO 5.2
+    // TODO: 3.6.6:
     // Write a test to verify:
     // - Transactions can be fetched by User ID
+    @Disabled
     @Test
     void shouldFindTransactionsByUserId() {
         // GIVEN
-        Transaction t1 = new Transaction();
-        t1.setWallet(wallet);
-        t1.setCategory(category);
-        t1.setAmount(100.0);
-        t1.setTransactionType("DEBIT");
-        t1.setReferenceId("TXN-TEST-002");
+        // Create and save multiple Transactions for the Wallet
 
-        Transaction t2 = new Transaction();
-        t2.setWallet(wallet);
-        t2.setCategory(category);
-        t2.setAmount(200.0);
-        t2.setTransactionType("DEBIT");
-        t2.setReferenceId("TXN-TEST-003");
-
-        transactionRepository.save(t1);
-        transactionRepository.save(t2);
 
         // WHEN
-        List<Transaction> transactions =
-                transactionRepository.findByWallet_User_Id(user.getId());
+
 
         // THEN
-        assertThat(transactions).hasSize(2);
+
     }
 
-    // TODO 5.3
+    // TODO: 3.6.7
     // Write a test to verify:
     // - Empty list is returned when no transactions exist for user
+    @Disabled
     @Test
     void shouldReturnEmptyListWhenNoTransactionsForUser() {
         // GIVEN
-        Long nonExistingUserId = 9999L;
 
         // WHEN
-        List<Transaction> transactions =
-                transactionRepository.findByWallet_User_Id(nonExistingUserId);
 
         // THEN
-        assertThat(transactions).isEmpty();
+
     }
 }

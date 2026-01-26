@@ -7,6 +7,7 @@ import com.orion.DigiWallet.service.UserService;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -30,19 +31,21 @@ public class UserController {
         return userService.getAllUsers();
     }
 
+    @ResponseStatus(HttpStatus.OK)
     @GetMapping("/{id}")
     public User getUserById(@PathVariable Long id) {
         logger.info("GET /api/users/{} called", id);
         return userService.getUserById(id);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public User createUser(@RequestBody User user) {
         logger.info("POST /api/users called");
         return userService.createUser(user);
     }
 
-    //TODO: 4.3
+    //TODO: 4.1
     // UPDATE USER STATUS FROM ACTIVE TO INACTIVE OR VICE VERSA
     // -------------------------
     // http://localhost:8080/api/users/{id}
@@ -50,10 +53,6 @@ public class UserController {
     // METHOD NAME: updateUserStatus
     // status (ACTIVE/INACTIVE)
     // RESPONSE BODY: Updated User JSON
-    @PutMapping("/{id}")
-    public User updateUserStatus(@PathVariable Long id) {
-        logger.info("PUT /api/users/{} called to update status", id);
-        return userService.updateUserStatus(id);
-    }
+
 }
 

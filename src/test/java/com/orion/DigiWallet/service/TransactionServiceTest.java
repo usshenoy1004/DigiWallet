@@ -6,10 +6,7 @@ import com.orion.DigiWallet.model.Wallet;
 import com.orion.DigiWallet.repository.CategoryRepository;
 import com.orion.DigiWallet.repository.TransactionRepository;
 import com.orion.DigiWallet.repository.WalletRepository;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
 import org.mockito.Mock;
@@ -64,6 +61,8 @@ class TransactionServiceTest {
     // ---------------------------------------------------------
     @Nested
     @DisplayName("createTransaction()")
+    //TODO: REMOVE @Disabled TO ENABLE THE TESTS
+    @Disabled
     class CreateTransactionTests {
 
         @Test

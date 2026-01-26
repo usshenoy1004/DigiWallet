@@ -28,7 +28,7 @@ public class TransactionController {
         return transactionService.createTransaction(walletId, categoryId, amount);
     }
 
-    //TODO: 4.1
+    //TODO: 4.0.1
     // GET TRANSACTION BY ID API
     // -------------------------
     // http://localhost:8080/api/transactions/{id}
@@ -39,7 +39,7 @@ public class TransactionController {
         return transactionService.getTransactionById(id);
     }
 
-    //TODO: 4.2
+    //TODO: 4.0.2
     // GET TRANSACTIONS BY USER ID API
     // -------------------------
     // http://localhost:8080/api/transactions/user/{userId}

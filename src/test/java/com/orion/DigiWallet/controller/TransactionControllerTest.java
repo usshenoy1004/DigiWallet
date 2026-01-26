@@ -5,6 +5,7 @@ import com.orion.DigiWallet.model.Category;
 import com.orion.DigiWallet.model.Transaction;
 import com.orion.DigiWallet.model.Wallet;
 import com.orion.DigiWallet.service.TransactionService;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -36,6 +37,7 @@ class TransactionControllerTest {
     private ObjectMapper objectMapper;
 
     // ------------------------------------------------------------------
+    @Disabled
     @Nested
     @DisplayName("POST /api/transactions/create")
     class CreateTransactionTests {
@@ -48,6 +50,7 @@ class TransactionControllerTest {
             Wallet wallet = new Wallet();
             wallet.setId(1L);
             wallet.setBalance(BigDecimal.valueOf(1000));
+
 
             Category category = new Category();
             category.setId(8L);

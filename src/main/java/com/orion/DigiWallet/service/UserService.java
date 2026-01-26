@@ -6,6 +6,7 @@ import com.orion.DigiWallet.repository.UserRepository;
 import jakarta.transaction.Transactional;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -17,6 +18,7 @@ public class UserService  {
 
     private final UserRepository userRepository;
 
+    @Autowired
     public UserService(UserRepository userRepository) {
         this.userRepository = userRepository;
     }
@@ -26,28 +28,24 @@ public class UserService  {
 
         List<User> users = userRepository.findAll();
         logger.info("Total users fetched: {}", users.size());
-
+        return users;
         //TODO: 1.4
         // For each user in the list, call generateGreetingMsg(user)
         // before returning the list
         // Hint: Use a for-each loop to iterate through the users list
-        for (User user : users) {
-            String greeting = generateGreetingMsg(user.getRole());
-            user.setUserGreetingMessage(greeting);
-        }
+        // test the result on swagger or postman
 
-        return users;
+
     }
 
     public User getUserById(Long id) {
 
         //TODO: 1.1
         // Log incoming request with user ID
-        logger.info("Fetching user with id {}", id);
-
-        // Call repository method findById(id)
-        User user = userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("User not found with id " + id));
+        // Example: logger.info("Fetching user with id {}", id);
+        // Fetch user from repository
+        // test the result on swagger or postman
+        return null;
 
         //TODO: 1.3
         // Before returning the User object, call generateGreetingMsg(role)
@@ -55,23 +53,18 @@ public class UserService  {
         // Example: String greeting = generateGreetingMsg(user.getRole());
         // Then set this greeting message into the User object
         // Hint: Use user.setUserGreetingMessage(greeting)
-        String greeting = generateGreetingMsg(user.getRole());
-        user.setUserGreetingMessage(greeting);
+        // test the result on swagger or postman
 
-        return user;
     }
 
     @Transactional
     public User createUser(User user) {
         logger.info("Creating new user with username {}", user.getUsername());
-
         if (userRepository.existsByUsername(user.getUsername())) {
             throw new RuntimeException("Username already exists");
         }
-
         User savedUser = userRepository.save(user);
         logger.info("User created successfully with id {}", savedUser.getId());
-
         return savedUser;
     }
 
@@ -84,12 +77,8 @@ public class UserService  {
         // If the role is NOT ADMIN, append a standard user message
         // Example: "User access"
         // return the complete greeting message as a String
-
-        if ("ADMIN".equalsIgnoreCase(role)) {
-            return "Admin access enabled";
-        } else {
-            return "User access";
-        }
+        // write a unit test to verify this method works as expected
+        return null;
     }
 
     public User updateUserStatus(Long id) {

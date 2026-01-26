@@ -3,6 +3,7 @@ package com.orion.DigiWallet.service;
 import com.orion.DigiWallet.model.User;
 import com.orion.DigiWallet.repository.UserRepository;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -23,7 +24,7 @@ class UserServiceTest {
     @Mock
     UserRepository mockUserRepository;
 
-    //TODO: 1.6
+
     @InjectMocks
     UserService userService;
 
@@ -42,6 +43,15 @@ class UserServiceTest {
         user2.setFullName("Admin User");
         user2.setRole("ADMIN");
     }
+
+    //TODO: 1.6 - calculator method tests
+    // READ ONLY
+    // RUN THIS TEST AND UNDERSTAND THE WORKING
+    // disucss what is nested class
+    // what is @test annotation
+    // what is assertEquals
+    // what is assertThrows
+    // what is IllegalArgumentException
 
     @Nested
             // @nested annotation is used to group related test cases together
@@ -99,33 +109,35 @@ class UserServiceTest {
         }
     }
 
+
     @Nested
     class GenerateGreetingMsgTests {
-        //TODO : 1.7
+        //TODO: : 1.7
         // Implement unit tests for generateGreetingMsg method in UserService
         // Cover scenarios for ADMIN role, non-ADMIN role, and null role
         // Use assertions to verify the correctness of the returned greeting messages
 
+        //remove @Disabled after implementing write test actual method
+        @Disabled
         @Test
         void shouldReturnAdminGreeting_whenRoleIsAdmin() {
-            String result = userService.generateGreetingMsg("ADMIN");
-            assertEquals("Admin access enabled", result);
+
         }
 
+        @Disabled
         @Test
         void shouldReturnUserGreeting_whenRoleIsNotAdmin() {
-            String result = userService.generateGreetingMsg("USER");
-            assertEquals("User access", result);
+
         }
 
+        @Disabled
         @Test
         void shouldReturnUserGreeting_whenRoleIsNull() {
-            String result = userService.generateGreetingMsg(null);
-            assertEquals("User access", result);
+
         }
     }
 
-    //TODO: 1.8
+    //TODO: 1.8.0
     // READ-ONLY
     // RUN THIS TEST AND UNDERSTAND THE WORKING
     @Test
@@ -146,11 +158,11 @@ class UserServiceTest {
         // Uncomment the below assertions after implementing greeting message logic
         //ONLY IF 1.4 IS DONE
 
-        assertNotNull(result.get(0).getUserGreetingMessage());
-        assertNotNull(result.get(1).getUserGreetingMessage());
+       // assertNotNull(result.get(0).getUserGreetingMessage());
+        // assertNotNull(result.get(1).getUserGreetingMessage());
 
-        assertTrue(result.get(0).getUserGreetingMessage().contains("User access"));
-        assertTrue(result.get(1).getUserGreetingMessage().contains("Admin access"));
+        // assertTrue(result.get(0).getUserGreetingMessage().contains("User access"));
+        // assertTrue(result.get(1).getUserGreetingMessage().contains("Admin access"));
 
         // Verify repository interaction
         verify(mockUserRepository, times(1)).findAll();
@@ -158,6 +170,8 @@ class UserServiceTest {
 
     //TODO: 1.9
     // implement the unit test for getUserById method in UserService
+    // remove @Disabled after implementing write test actual method
+    @Disabled
     @Test
     void getUserById_shouldReturnUserWithGreetingMessage() {
         // GIVEN
@@ -176,7 +190,7 @@ class UserServiceTest {
         verify(mockUserRepository).findById(1L);
     }
 
-    //TODO 1.10
+    //TODO: 1.10
     // READ ONLY
     // implement the unit test for createUser method in UserService
     @Nested

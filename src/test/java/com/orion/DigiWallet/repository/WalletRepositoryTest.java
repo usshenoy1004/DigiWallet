@@ -2,6 +2,7 @@ package com.orion.DigiWallet.repository;
 
 import com.orion.DigiWallet.model.User;
 import com.orion.DigiWallet.model.Wallet;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -16,6 +17,14 @@ import static org.assertj.core.api.Assertions.assertThat;
 @DataJpaTest
 @AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
 @ActiveProfiles("test")
+//TODO: 3.7: remove @Disabled to enable the tests
+// Go though the complete walletRepositoryTest and answer or discuss with fellow engineers
+// Q1: Do you see any similarities with other repository tests you have done so far?
+// Q2: What is the purpose of @DataJpaTest annotation here?
+// Q3: Why is it important to have test cases like these for repositories?
+// Q4: How does this test ensure the integrity of data operations in the application?
+// Q5: What would happen if the walletRepository.findByUserId method did not work as expected?
+@Disabled
 class WalletRepositoryTest {
 
     @Autowired

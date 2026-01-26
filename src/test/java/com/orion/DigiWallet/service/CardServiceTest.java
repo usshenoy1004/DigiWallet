@@ -2,6 +2,7 @@ package com.orion.DigiWallet.service;
 
 import com.orion.DigiWallet.model.Card;
 import com.orion.DigiWallet.repository.CardRepository;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
 import org.junit.jupiter.api.Test;
@@ -28,6 +29,8 @@ class CardServiceTest {
     private CardService cardService;
 
     // ---------------------------------------------------------
+    // REMOVE @Disabled TO ENABLE THE TESTS
+    @Disabled
     @Nested
     @DisplayName("createCard()")
     class CreateCardTests {
@@ -75,6 +78,8 @@ class CardServiceTest {
     }
 
     // ---------------------------------------------------------
+    // REMOVE @Disabled TO ENABLE THE TESTS
+    @Disabled
     @Nested
     @DisplayName("getCardById()")
     class GetCardByIdTests {
@@ -114,6 +119,8 @@ class CardServiceTest {
     }
 
     // ---------------------------------------------------------
+    // REMOVE @Disabled TO ENABLE THE TESTS
+    @Disabled
     @Nested
     @DisplayName("updateCard()")
     class UpdateCardTests {
@@ -162,6 +169,8 @@ class CardServiceTest {
     }
 
     // ---------------------------------------------------------
+    // REMOVE @Disabled TO ENABLE THE TESTS
+    @Disabled
     @Nested
     @DisplayName("deleteCard()")
     class DeleteCardTests {

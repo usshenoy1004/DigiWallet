@@ -4,6 +4,7 @@ import com.orion.DigiWallet.model.Card;
 import com.orion.DigiWallet.model.User;
 import com.orion.DigiWallet.model.Wallet;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Disabled;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase;
@@ -20,6 +21,8 @@ import static org.assertj.core.api.Assertions.assertThat;
 // FIRST SEE THE APPLICATION.PROPERTIES IN TEST RESOURCES FOLDER
 // ALSO LOOK AT THE DBSCIPT.SQL AND DATAINSERT.SQL FILES IN MAIN FOLDER
 //RUN THE SHELL SCRIPT TO CREATE THE TABLES IN TEST DATABASE BEFORE RUNNING THE TESTS
+//TODO: 3.5.1: REMOVE @Disabled TO ENABLE THE TESTS
+@Disabled
 public class CardRepositoryTest {
 
     @Autowired
@@ -33,6 +36,7 @@ public class CardRepositoryTest {
 
     private Wallet wallet;
 
+    //TODO: 3.5.2: REVIEW SETUP METHOD
     @BeforeEach
     void setUp() {
         // GIVEN
@@ -52,56 +56,50 @@ public class CardRepositoryTest {
         this.wallet = walletRepository.save(w);
     }
 
-    // TODO 4.1
+    //TODO: 3.5.3:
     // Write a test to verify:
     // - A Card can be saved successfully
     // - Card ID is generated
+    @Disabled
     @Test
     void shouldSaveCardSuccessfully() {
         // GIVEN
-        Card card = new Card();
-        card.setCardNumber("4111111111111111");
-        card.setWallet(wallet);
+
 
         // WHEN
-        Card savedCard = cardRepository.save(card);
+
 
         // THEN
-        assertThat(savedCard.getId()).isNotNull();
+
     }
 
-    // TODO 4.2
+    //TODO: 3.5.4:
     // Write a test to verify:
     // - Card can be fetched by cardNumber
     @Test
+    @Disabled
     void shouldFindCardByCardNumber() {
         // GIVEN
-        Card card = new Card();
-        card.setCardNumber("5555444433332222");
-        card.setWallet(wallet);
-        cardRepository.save(card);
+
 
         // WHEN
-        var result = cardRepository.findByCardNumber("5555444433332222");
+
 
         // THEN
-        assertThat(result).isPresent();
+
     }
 
-    // TODO 4.3
+    //TODO: 3.5.5
     // Write a test to verify:
     // - existsByCardNumber returns true for existing card
     // - existsByCardNumber returns false for non-existing card
+    @Disabled
     @Test
     void shouldCheckIfCardExistsByCardNumber() {
         // GIVEN
-        Card card = new Card();
-        card.setCardNumber("9999888877776666");
-        card.setWallet(wallet);
-        cardRepository.save(card);
+
 
         // WHEN + THEN
-        assertThat(cardRepository.existsByCardNumber("9999888877776666")).isTrue();
-        assertThat(cardRepository.existsByCardNumber("0000111122223333")).isFalse();
+
     }
 }

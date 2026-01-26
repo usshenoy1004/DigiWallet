@@ -4,9 +4,9 @@ import jakarta.persistence.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 
+//TODO: 3.1.1
+// READ ONLY
 
-// TODO 2.1
-//UNCOMMENT THE ANNOTATIONS BELOW TO MAKE THIS CLASS A JPA ENTITY
 @Entity
 @Table(name = "card")
 public class Card {
