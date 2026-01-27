@@ -15,8 +15,7 @@ import java.util.Optional;
 import static org.assertj.core.api.Assertions.assertThat;
 
 @DataJpaTest
-@AutoConfigureTestDatabase(replace = AutoConfigureTestDatabase.Replace.NONE)
-@ActiveProfiles("test")
+// H2 in-memory database will be auto-configured by @DataJpaTest
 //TODO: 3.7: remove @Disabled to enable the tests
 // Go though the complete walletRepositoryTest and answer or discuss with fellow engineers
 // Q1: Do you see any similarities with other repository tests you have done so far?
