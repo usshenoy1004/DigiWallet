@@ -45,7 +45,11 @@ public class UserService  {
         // Example: logger.info("Fetching user with id {}", id);
         // Fetch user from repository
         // test the result on swagger or postman
-        return null;
+        logger.info("Fetching user with id {}", id);
+        User user = userRepository.findById(id).orElse(null);
+        if(user==null)
+            throw new RuntimeException("User ID does not exist.");
+        return user;
 
         //TODO: 1.3
         // Before returning the User object, call generateGreetingMsg(role)
