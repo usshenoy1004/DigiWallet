@@ -49,7 +49,6 @@ public class UserService  {
         User user = userRepository.findById(id).orElse(null);
         if(user==null)
             throw new RuntimeException("User ID does not exist.");
-        return user;
 
         //TODO: 1.3
         // Before returning the User object, call generateGreetingMsg(role)
@@ -58,6 +57,9 @@ public class UserService  {
         // Then set this greeting message into the User object
         // Hint: Use user.setUserGreetingMessage(greeting)
         // test the result on swagger or postman
+        String greeting = generateGreetingMsg(user.getRole());
+        user.setUserGreetingMessage(greeting);
+        return user;
 
     }
 
