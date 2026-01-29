@@ -28,14 +28,16 @@ public class UserService  {
 
         List<User> users = userRepository.findAll();
         logger.info("Total users fetched: {}", users.size());
-        return users;
         //TODO: 1.4
         // For each user in the list, call generateGreetingMsg(user)
         // before returning the list
         // Hint: Use a for-each loop to iterate through the users list
         // test the result on swagger or postman
-
-
+        for(User user : users) {
+            String greeting = generateGreetingMsg(user.getRole());
+            user.setUserGreetingMessage(greeting);
+        }
+        return users;
     }
 
     public User getUserById(Long id) {
