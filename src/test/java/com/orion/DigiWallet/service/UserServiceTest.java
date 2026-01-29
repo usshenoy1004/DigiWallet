@@ -112,28 +112,28 @@ class UserServiceTest {
 
     @Nested
     class GenerateGreetingMsgTests {
-        //TODO: : 1.7
+        //TODO: : 1.7 = DONE
         // Implement unit tests for generateGreetingMsg method in UserService
         // Cover scenarios for ADMIN role, non-ADMIN role, and null role
         // Use assertions to verify the correctness of the returned greeting messages
 
         //remove @Disabled after implementing write test actual method
-        @Disabled
         @Test
         void shouldReturnAdminGreeting_whenRoleIsAdmin() {
-
+            String result = userService.generateGreetingMsg("ADMIN");
+            assertEquals("Admin access enabled.", result);
         }
 
-        @Disabled
         @Test
         void shouldReturnUserGreeting_whenRoleIsNotAdmin() {
-
+            String result = userService.generateGreetingMsg("USER");
+            assertEquals("User access.", result);
         }
 
-        @Disabled
         @Test
         void shouldReturnUserGreeting_whenRoleIsNull() {
-
+            String result = userService.generateGreetingMsg(null);
+            assertEquals("User access.", result);
         }
     }
 
