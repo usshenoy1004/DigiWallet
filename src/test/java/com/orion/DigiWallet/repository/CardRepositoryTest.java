@@ -22,7 +22,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 // ALSO LOOK AT THE DBSCIPT.SQL AND DATAINSERT.SQL FILES IN MAIN FOLDER
 //RUN THE SHELL SCRIPT TO CREATE THE TABLES IN TEST DATABASE BEFORE RUNNING THE TESTS
 //TODO: 3.5.1: REMOVE @Disabled TO ENABLE THE TESTS
-@Disabled
+//@Disabled
 public class CardRepositoryTest {
 
     @Autowired
