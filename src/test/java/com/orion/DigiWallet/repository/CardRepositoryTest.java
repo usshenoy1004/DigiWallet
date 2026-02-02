@@ -60,46 +60,75 @@ public class CardRepositoryTest {
     // Write a test to verify:
     // - A Card can be saved successfully
     // - Card ID is generated
-    @Disabled
     @Test
     void shouldSaveCardSuccessfully() {
         // GIVEN
-
-
+        Card card = new Card();
+        card.setCardNumber("1234-5678-9012");
+        card.setWallet(wallet);
+        card.setCardType("DEBIT");
+        card.setExpiryDate(java.time.LocalDate.now().plusYears(3));
+        card.setStatus("ACTIVE");
         // WHEN
-
+        Card savedCard = cardRepository.save(card);
 
         // THEN
-
+        assertThat(savedCard).isNotNull();
+        // id should be generated (not null and greater than 0)
+        assertThat(savedCard.getId()).isNotNull();
+        assertThat(savedCard.getId()).isGreaterThan(0L);
+        // repository should be able to find the saved card
+        assertThat(cardRepository.existsById(savedCard.getId())).isTrue();
+        // and cardNumber should match
+        assertThat(savedCard.getCardNumber()).isEqualTo(card.getCardNumber());
     }
 
     //TODO: 3.5.4:
     // Write a test to verify:
     // - Card can be fetched by cardNumber
     @Test
-    @Disabled
+//    @Disabled
     void shouldFindCardByCardNumber() {
         // GIVEN
-
+        Card card = new Card();
+        card.setCardNumber("8888-7777-6666");
+        card.setWallet(wallet);
+        card.setCardType("DEBIT");
+        card.setExpiryDate(java.time.LocalDate.now().plusYears(4));
+        card.setStatus("ACTIVE");
+        Card savedCard=cardRepository.save(card);
 
         // WHEN
-
+        java.util.Optional<Card> optCard = cardRepository.findByCardNumber(savedCard.getCardNumber());
 
         // THEN
-
+        assertThat(optCard).isPresent();
+        Card fetchedCard = optCard.get();
+        assertThat(fetchedCard.getId()).isEqualTo(savedCard.getId());
+        assertThat(fetchedCard.getCardNumber()).isEqualTo(savedCard.getCardNumber());
     }
 
     //TODO: 3.5.5
     // Write a test to verify:
     // - existsByCardNumber returns true for existing card
     // - existsByCardNumber returns false for non-existing card
-    @Disabled
+//    @Disabled
     @Test
     void shouldCheckIfCardExistsByCardNumber() {
         // GIVEN
-
-
+        Card card = new Card();
+        card.setCardNumber("4444-3333-2222");
+        card.setWallet(wallet);
+        card.setCardType("CREDIT");
+        card.setExpiryDate(java.time.LocalDate.now().plusYears(2));
+        card.setStatus("ACTIVE");
+        Card savedCard=cardRepository.save(card);
+        String nonExistingCardNumber = "8888-7777-6666";
         // WHEN + THEN
+        boolean exists = cardRepository.existsByCardNumber(savedCard.getCardNumber());
+        assertThat(exists).isTrue();
+        boolean notExists = cardRepository.existsByCardNumber(nonExistingCardNumber);
+        assertThat(notExists).isFalse();
 
     }
 }
